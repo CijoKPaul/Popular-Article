@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface ApiInterface {
     @GET("mostviewed/all-sections/7.json?api-key=68bdgi77eHGpVPQwdqZ9NCx6jZyFoByD")
-    suspend fun getArticles(): Response<List<ResponseList>>
+    suspend fun getArticles(): Response<ResponseList>
 }
 

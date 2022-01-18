@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
+import com.example.coroutineretrofitdemo.model.Articles
 import com.test.populararticles.R
 import com.test.populararticles.model.ResponseList
 
-class CustomAdapter (private var itemsList: List<ResponseList>) :
+class CustomAdapter (private var itemsList: List<Articles>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var itemTitle: TextView? = null
@@ -22,13 +23,12 @@ class CustomAdapter (private var itemsList: List<ResponseList>) :
             itemDate = view.findViewById(R.id.textView3)
         }
 
-        fun bind(data : ResponseList){
+        fun bind(data : Articles){
 
-            for (items in data.results){
-                itemTitle?.text = items.title
-                itemByline?.text = items.byline
-                itemDate?.text = items.published_date
-            }
+                itemTitle?.text = data.title
+                itemByline?.text = data.byline
+                itemDate?.text = data.published_date
+
 
         }
     }

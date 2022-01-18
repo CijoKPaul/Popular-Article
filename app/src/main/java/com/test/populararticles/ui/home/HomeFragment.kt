@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -26,17 +27,19 @@ class HomeFragment : Fragment() {
 
         activity?.let {
             viewModel.artilcesLiveData.observe(viewLifecycleOwner, Observer {
-                customAdapter = CustomAdapter(it)
+                customAdapter = CustomAdapter(it.results)
                 val layoutManager = LinearLayoutManager(activity)
                 rvView.layoutManager = layoutManager
                 rvView.adapter = customAdapter
                 customAdapter.notifyDataSetChanged()
+                progressBar.visibility = View.GONE
             })
         }
 
         activity?.let {
             viewModel.articleLoadError.observe(viewLifecycleOwner, Observer {
                 println(it)
+                progressBar.visibility = View.GONE
             })
         }
 

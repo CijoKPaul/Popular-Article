@@ -10,9 +10,9 @@ import retrofit2.Response
 import java.lang.Exception
 
 class ListViewModel : ViewModel(){
-    val artilcesLiveData = MutableLiveData<List<ResponseList>>()
+    val artilcesLiveData = MutableLiveData<ResponseList>()
     var job : Job? = null
-    var response : Response<List<ResponseList>>? = null
+    var response : Response<ResponseList>? = null
     val articleLoadError = MutableLiveData<String>()
 
     fun fetchArticles(){
